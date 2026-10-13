@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Younghoon Son</title>
+<meta name="description" content="손영훈 — Enterprise Account Executive, Salesforce">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --sky:#EDF1F7;
+    --ink:#10172B;
+    --ink-soft:#1B2A4A;
+    --accent:#2F6FED;
+    --amber:#F2A93B;
+    --line:#C7D2E3;
+    --max:68ch;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sky);
+    color:var(--ink-soft);
+    font-family:'Pretendard Variable','Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--accent); text-decoration-color:rgba(47,111,237,.35); text-underline-offset:3px;}
+  a:hover{text-decoration-color:var(--accent);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--ink); color:#fff; padding:.6rem 1rem; z-index:100;
+  }
+  .skip-link:focus{left:1rem; top:1rem;}
+
+  /* ---------- Top bar ---------- */
+  header.topbar{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem clamp(1.25rem, 4vw, 3rem);
+    background:rgba(237,241,247,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .topbar nav{display:flex; gap:clamp(1rem,2vw,1.75rem);}
+  .topbar nav a{
+    color:var(--ink-soft);
+    font-size:.95rem;
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  .topbar nav a:hover{border-bottom-color:var(--accent); color:var(--ink);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 0%, rgba(47,111,237,.22), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 90% 15%, rgba(242,169,59,.16), transparent 60%),
+      linear-gradient(165deg, #10172B 0%, #141E3C 55%, #16264A 100%);
+    color:#EAEEF8;
+    padding:clamp(4rem,10vw,7.5rem) clamp(1.25rem,4vw,3rem) clamp(3.5rem,8vw,5.5rem);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:auto 0 0 0; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+  }
+  .hero-eyebrow{
+    font-size:.95rem;
+    color:#9FB3DD;
+    margin:0 0 1.1rem;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    letter-spacing:-.01em;
+    font-size:clamp(2.6rem, 6.5vw, 4.6rem);
+    line-height:1.05;
+    margin:0 0 1.1rem;
+    color:#fff;
+  }
+  .hero p.lede{
+    max-width:38ch;
+    font-size:clamp(1.05rem,1.6vw,1.25rem);
+    color:#C7D3EC;
+    margin:0 0 2.1rem;
+  }
+  .hero-links{display:flex; gap:1.5rem; flex-wrap:wrap;}
+  .hero-links a{
+    color:#EAEEF8;
+    font-size:.95rem;
+    text-decoration:none;
+    border-bottom:1px solid rgba(234,238,248,.35);
+    padding-bottom:3px;
+  }
+  .hero-links a:hover{border-bottom-color:var(--amber); color:var(--amber);}
+
+  /* ---------- Dossier layout ---------- */
+  main{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 clamp(1.25rem,4vw,3rem);
+  }
+  .entry{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:clamp(1.5rem,4vw,3rem);
+    padding:clamp(2.75rem,6vw,4rem) 0;
+    border-bottom:1px solid var(--line);
+  }
+  .entry:last-of-type{border-bottom:none;}
+  .entry .label{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.15rem;
+    color:var(--ink);
+    position:sticky;
+    top:5.5rem;
+    align-self:start;
+  }
+  .entry .label .num{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:.8rem;
+    color:var(--accent);
+    margin-bottom:.35rem;
+  }
+  .entry .content{max-width:var(--max);}
+  .entry .content p{margin:0 0 1rem;}
+  .entry .content p:last-child{margin-bottom:0;}
+
+  .role{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-bottom:.3rem;
+  }
+  .role h3{
+    margin:0;
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .role time{
+    font-size:.9rem;
+    color:#5A6B8C;
+    white-space:nowrap;
+  }
+  .role-desc{color:var(--ink-soft); margin:0 0 1.6rem;}
+  .role-desc:last-child{margin-bottom:0;}
+
+  .tag-row{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.65rem;}
+  .tag{
+    font-size:.82rem;
+    padding:.25rem .65rem;
+    border:1px solid var(--line);
+    border-radius:3px;
+    color:var(--ink-soft);
+    background:#fff;
+  }
+
+  .contact-list{list-style:none; margin:0; padding:0;}
+  .contact-list li{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:.75rem 0;
+    border-bottom:1px solid var(--line);
+    font-size:.98rem;
+  }
+  .contact-list li:first-child{padding-top:0;}
+  .contact-list li:last-child{border-bottom:none;}
+  .contact-list span.key{color:#5A6B8C;}
+
+  footer{
+    padding:2.5rem clamp(1.25rem,4vw,3rem) 3.5rem;
+    max-width:1040px;
+    margin:0 auto;
+    color:#5A6B8C;
+    font-size:.88rem;
+  }
+
+  @media (max-width: 680px){
+    .entry{grid-template-columns:1fr; gap:.75rem;}
+    .entry .label{position:static;}
+    .topbar nav{gap:.9rem;}
+    .topbar nav a{font-size:.85rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">본문으로 바로가기</a>
+
+<header class="topbar">
+  <a class="mark" href="#top">손영훈</a>
+  <nav aria-label="주요 메뉴">
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <p class="hero-eyebrow">개인 홈페이지</p>
+  <h1>Younghoon Son</h1>
+  <p class="lede">엔터프라이즈 기술 세일즈 13년 차. Salesforce에서 대형 IT 기업들의 CRM &amp; AI 포트폴리오를 담당하고 있습니다.</p>
+  <div class="hero-links">
+    <a href="mailto:goody.young@gmail.com">이메일 보내기</a>
+    <a href="https://www.linkedin.com/in/syoungh/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<main id="main">
+</main>
+
+<footer>
+  © 2026 Younghoon Son. 이 페이지는 GitHub Pages로 호스팅되고 있습니다.
+</footer>
+
+</body>
+</html>
